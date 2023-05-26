@@ -9,6 +9,16 @@
   <dd><%= @post.content %></dd>
 </dl>
 
+<div>
+ <% if @post.photos.attached? %>
+  <% @post.photos.each do |photo|  %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+ <% else %>
+  <img src="<%= cl_image_path "sample" %>"> 
+ <% end %>
+<div>
+
 <%= link_to posts_path, class: 'btn btn-default' do %>
   All Posts
 <% end %>
